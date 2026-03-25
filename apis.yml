@@ -1,0 +1,38 @@
+aid: dredd
+name: Dredd
+description: >-
+  Dredd is an open source HTTP API testing framework that validates API implementations against API Blueprint or OpenAPI specification documents.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Testing
+  - Contract Testing
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/dredd/refs/heads/main/apis.yml
+created: '2026-03-25'
+modified: '2026-03-25'
+specificationVersion: '0.19'
+apis:
+  - aid: dredd:dredd
+    name: Dredd
+    description: >-
+      Dredd is an open source HTTP API testing framework that validates API implementations against API Blueprint or OpenAPI specification documents.
+    humanURL: https://dredd.org
+    tags:
+      - Testing
+      - Contract Testing
+    properties:
+      - type: Documentation
+        url: https://dredd.org/en/latest/
+      - type: GitHub Repository
+        url: https://github.com/apiaryio/dredd
+common:
+  - type: Website
+    url: https://dredd.org
+  - type: Documentation
+    url: https://dredd.org/en/latest/
+  - type: GitHub Organization
+    url: https://github.com/apiaryio/dredd
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
