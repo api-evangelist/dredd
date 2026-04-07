@@ -5,8 +5,8 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Testing
   - Contract Testing
+  - Testing
 url: >-
   https://raw.githubusercontent.com/api-evangelist/dredd/refs/heads/main/apis.yml
 created: '2026-03-25'
@@ -19,8 +19,8 @@ apis:
       Dredd is an open source HTTP API testing framework that validates API implementations against API Blueprint or OpenAPI specification documents.
     humanURL: https://dredd.org
     tags:
-      - Testing
       - Contract Testing
+      - Testing
     properties:
       - type: Documentation
         url: https://dredd.org/en/latest/
