@@ -36,7 +36,7 @@ apis:
     properties:
       - type: Documentation
         url: https://dredd.org/en/latest/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/apiaryio/dredd
       - type: NPM Package
         url: https://www.npmjs.com/package/dredd
@@ -49,7 +49,7 @@ common:
     url: https://dredd.org
   - type: Documentation
     url: https://dredd.org/en/latest/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/apiaryio
 maintainers:
   - FN: Kin Lane
