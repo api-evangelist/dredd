@@ -42,7 +42,7 @@ apis:
         url: https://www.npmjs.com/package/dredd
       - type: Issues
         url: https://github.com/apiaryio/dredd/issues
-      - type: Releases
+      - type: ReleaseNotes
         url: https://github.com/apiaryio/dredd/releases
 common:
   - type: Website
