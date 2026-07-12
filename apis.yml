@@ -45,6 +45,8 @@ apis:
       - type: ReleaseNotes
         url: https://github.com/apiaryio/dredd/releases
 common:
+  - type: DomainSecurity
+    url: security/dredd-domain-security.yml
   - type: Website
     url: https://dredd.org
   - type: Documentation
