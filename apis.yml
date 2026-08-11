@@ -57,6 +57,11 @@ apis:
       - type: ReleaseNotes
         url: https://github.com/apiaryio/dredd/releases
 common:
+  - type: ContributionGuide
+    url: https://github.com/apiaryio/dredd/blob/master/CONTRIBUTING.md
+  - type: License
+    name: MIT
+    url: https://github.com/apiaryio/dredd/blob/master/LICENSE
   - type: DomainSecurity
     url: security/dredd-domain-security.yml
   - type: Website
