@@ -1,9 +1,16 @@
 aid: dredd
 name: Dredd
 description: >-
-  Dredd is a language-agnostic, open source HTTP API testing framework that
-  validates API implementations against API Blueprint or OpenAPI (2.0/3.0)
-  description documents.
+  Dredd is a language-agnostic, MIT-licensed open source command-line tool that
+  validates a running HTTP API against its own API description document. It
+  compiles every request/response pair documented in an API Blueprint, OpenAPI
+  2.0 or (experimentally) OpenAPI 3.0 file into an HTTP transaction, calls the
+  API under test, and reports where the implementation and the documentation
+  disagree. Hooks written in Node.js, Ruby, Python, PHP, Perl, Go or Rust handle
+  per-transaction test setup and teardown, and pluggable reporters (xunit, dot,
+  markdown, html) wire it into CI. Dredd publishes no API of its own — it is a
+  client you install and run. The project has been archived and unmaintained
+  since November 2024; the last release, 14.1.0, shipped in November 2021.
 type: Index
 deliveryModel:
   model: self-hosted
@@ -18,18 +25,19 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: freemium
-  onboarding: unknown
+  pricing: free
+  onboarding: self-service
   trial: false
   try_now: false
-  public: false
-  label: Freemium
-  confidence: medium
+  public: true
+  label: Free and open source
+  confidence: high
   source:
+  - license
   - plans
-  generated: '2026-07-22'
-  method: derived
-position: Tooling
+  generated: '2026-09-13'
+  method: searched
+position: Consuming
 access: Open Source
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dredd.png
 tags:
@@ -39,10 +47,14 @@ tags:
   - API Blueprint
   - Tooling
   - Developer Tools
+  - Command Line
+  - Continuous Integration
+  - JSON Schema
+  - Open Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/dredd/refs/heads/main/apis.yml
 created: '2026-03-25'
-modified: '2026-04-28'
+modified: '2026-09-13'
 specificationVersion: '0.23'
 apis:
   - aid: dredd:dredd
@@ -52,6 +64,7 @@ apis:
       description document against a backend implementation. It supports API
       Blueprint, OpenAPI 2.0, and OpenAPI 3.0, and provides hooks for custom
       test setup and teardown.
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dredd.png
     humanURL: https://dredd.org
     tags:
       - Contract Testing
@@ -63,10 +76,9 @@ apis:
         url: https://dredd.org/en/latest/
       - type: GitHubRepository
         url: https://github.com/apiaryio/dredd
-      - type: NPM Package
+      - type: Packages
+        name: dredd on npm
         url: https://www.npmjs.com/package/dredd
-      - type: Issues
-        url: https://github.com/apiaryio/dredd/issues
       - type: ReleaseNotes
         url: https://github.com/apiaryio/dredd/releases
 common:
@@ -83,6 +95,48 @@ common:
     url: https://dredd.org/en/latest/
   - type: GitHubOrganization
     url: https://github.com/apiaryio
+  - type: GettingStarted
+    name: Dredd quickstart
+    url: https://dredd.org/en/latest/quickstart/
+  - type: Support
+    name: Bug tracker (GitHub issues, repository archived and read-only)
+    url: https://github.com/apiaryio/dredd/issues
+  - type: DockerImage
+    name: apiaryio/dredd
+    url: https://hub.docker.com/r/apiaryio/dredd
+  - type: Packages
+    name: Dredd packages and hooks handlers
+    url: packages/dredd-packages.yml
+  - type: SDKs
+    name: First-party hooks handler libraries
+    url: packages/dredd-packages.yml
+  - type: CLI
+    name: Dredd command-line surface
+    url: cli/dredd-cli.yml
+  - type: ChangeLog
+    name: Dredd releases
+    url: changelog/dredd-changelog.yml
+  - type: Lifecycle
+    name: Versioning, maintenance state and archival
+    url: lifecycle/dredd-lifecycle.yml
+  - type: Conventions
+    name: Dredd operating conventions
+    url: conventions/dredd-conventions.yml
+  - type: Conformance
+    name: Supported description and validation standards
+    url: conformance/dredd-conformance.yml
+  - type: LLMsTxt
+    name: Dredd llms.txt
+    url: llms/dredd-llms.txt
+  - type: Plans
+    url: plans/dredd-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/dredd-rate-limits.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-13'
+  status: enriched
+  artifacts_added: 8
+  pass: local-v3

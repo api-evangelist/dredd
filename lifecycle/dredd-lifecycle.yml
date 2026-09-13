@@ -1,0 +1,84 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://dredd.org/en/latest/how-it-works/ (Versioning),
+  https://github.com/apiaryio/dredd (GitHub repository metadata),
+  https://github.com/apiaryio (organization banner),
+  https://github.com/apiaryio/dredd/releases
+note: >-
+  Dredd is a distributed command-line tool, not a hosted service, so the
+  service-shaped halves of this artifact do not exist and are recorded as
+  absent rather than guessed: there is no status page, no SLA, no uptime target
+  and no runtime deprecation headers, because there is no runtime we operate
+  against. What Dredd does publish is a versioning policy — and, since 2024, an
+  unambiguous end-of-life signal in the form of an archived repository and an
+  archived GitHub organization.
+versioning:
+  scheme: semver
+  current: 14.1.0
+  current_released: '2021-11-16'
+  docs: https://dredd.org/en/latest/how-it-works/
+  note: >-
+    Published policy, quoted from the docs: "Dredd follows Semantic Versioning.
+    To ensure certain stability of your Dredd installation (e.g. in CI), pin the
+    version accordingly." Two npm dist-tags are documented as the stability
+    contract — `npm install dredd` installs the latest published version
+    including experimental pre-releases, and `npm install dredd@stable` skips
+    them and is the recommendation for CI.
+  user_agent_signal: >-
+    Dredd sends its own version number in the User-Agent header of every HTTP
+    request it makes, unless the API description document overrides that header.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No deprecation policy page and no RFC 8594 Sunset/Deprecation header
+    support — neither is applicable to a CLI. Feature-level deprecations are
+    announced only in release notes; the 13.0.0 release (2020-02-05) removing
+    JSON Schema Draft V3 support is the pattern, preceded one release earlier by
+    a runtime deprecation warning in gavel@8.2.3.
+sla:
+  url: null
+  uptime_target: null
+  note: Not applicable — self-installed tool, no hosted service.
+status_page: null
+status_page_note: >-
+  Probed and not found. Dredd operates nothing for a user to check the status
+  of; no StatusPage pointer is emitted.
+maintenance:
+  state: archived
+  archived_on: '2024-11-08'
+  last_repository_push: '2024-05-11'
+  last_release: '2021-11-16'
+  evidence:
+    - source: https://api.github.com/repos/apiaryio/dredd
+      observation: 'archived: true, pushed_at 2024-05-11T13:19:25Z, 260 open issues, 4,223 stars'
+      http_status: 200
+      fetched: '2026-09-13'
+    - source: https://github.com/apiaryio
+      observation: >-
+        "This organization was marked as archived by an administrator on Nov 8,
+        2024. It is no longer maintained."
+      http_status: 200
+      fetched: '2026-09-13'
+    - source: https://registry.npmjs.org/dredd
+      observation: 'latest = 14.1.0 published 2021-11-16; package metadata last modified 2023-02-13'
+      http_status: 200
+      fetched: '2026-09-13'
+    - source: https://hub.docker.com/r/apiaryio/dredd
+      observation: 'latest, stable and 14.0.0 tags all last pushed 2021-06-13'
+      http_status: 200
+      fetched: '2026-09-13'
+  first_party_repositories_archived:
+    - apiaryio/dredd
+    - apiaryio/dredd-hooks-python
+    - apiaryio/dredd-hooks-ruby
+    - apiaryio/dredd-hooks-template
+    - apiaryio/dredd-example
+  note: >-
+    Read-only. Issues cannot be filed, pull requests cannot be merged, and no
+    successor release channel is announced anywhere on dredd.org or in the
+    repository. Consumers pinning dredd@stable in CI are pinning a 2021 build.
+    Note that the docs themselves still describe Dredd as maintained and carry
+    no end-of-life notice — the archival signal lives only on GitHub.
+deprecated_operations: []

@@ -1,0 +1,52 @@
+generated: '2026-09-13'
+method: probed
+source: >-
+  Live HTTPS probes of every host this record knows — dredd.org (Website,
+  Documentation, the api entry humanURL) and www.dredd.org. There is no API
+  baseURL and no OpenAPI servers[] block to add hosts from: Dredd is a
+  client-side command-line tool and serves no HTTP API of its own.
+note: >-
+  Every probed path returned 404 from the Read the Docs origin that serves
+  dredd.org, with an identical 2,343-byte HTML "page not found" body. No
+  WellKnown or SecurityTxt pointer is emitted — this file records an absence,
+  and an absence must not be advertised as a served surface. The negative
+  control also returned 404, so the host is not a path-echoing catch-all and
+  these 404s are trustworthy.
+hit_count: 0
+path_echo_control: passed
+soft_404_control:
+  path: /.well-known/dredd-negative-control-495bd2a9.json
+  status: 404
+  bytes: 2343
+  note: A path that cannot exist; the host correctly 404s it.
+hosts:
+  - host: https://dredd.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /apis.yml, status: 404}
+      - {path: /llms.txt, status: 404}
+      - {path: /openapi.json, status: 404}
+  - host: https://www.dredd.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /apis.yml, status: 404}

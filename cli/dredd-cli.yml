@@ -1,0 +1,231 @@
+generated: '2026-09-13'
+method: searched
+source: https://dredd.org/en/latest/usage-cli/
+note: >-
+  Dredd IS a CLI — the command line is the whole product surface, not a
+  companion to an HTTP API. Captured verbatim from the published CLI Options
+  Reference (docs revision 3d4ae143, readthedocs "latest", which tracks
+  dredd@14.1.0). Defaults are the provider's published defaults.
+cli:
+  name: dredd
+  binary: dredd
+  language: javascript
+  runtime: Node.js >= 10 (docs state "at least version 8"; packages/dredd@14.1.0 engines declares >=10)
+  license: MIT
+  docs: https://dredd.org/en/latest/usage-cli/
+  source_code: https://github.com/apiaryio/dredd
+install:
+  - method: npm
+    command: npm install dredd --global
+    docs: https://dredd.org/en/latest/installation/
+  - method: npm-dev-dependency
+    command: npm install dredd --save-dev
+    docs: https://dredd.org/en/latest/installation/
+  - method: docker
+    command: docker run -it -v $PWD:/api -w /api apiaryio/dredd dredd
+    docs: https://dredd.org/en/latest/installation/
+    note: >-
+      Inside Docker the --server and --language options do not work, because
+      Dredd cannot manage child processes there; the docs direct you to Docker
+      Compose with separate containers instead.
+usage: "dredd '<api-description-document>' '<api-location>' [OPTIONS]"
+example: dredd ./apiary.md http://127.0.0.1:3000
+arguments:
+  - name: api-description-document
+    description: URL or path to the API description document (API Blueprint, OpenAPI 2).
+    samples: ['./api-blueprint.apib', './openapi2.yml', './openapi2.json', 'http://example.com/api-blueprint.apib']
+  - name: api-location
+    description: URL, the root address of the API under test.
+    samples: ['http://127.0.0.1:3000', 'http://api.example.com']
+commands:
+  - command: dredd
+    description: >-
+      Run the test suite. With a dredd.yml config file in place, takes no
+      arguments.
+  - command: dredd init
+    description: >-
+      Interactive wizard that writes a dredd.yml configuration file. Also
+      reachable as the --init / -i flag.
+configuration_file:
+  file: dredd.yml
+  default_path: ./dredd.yml
+  description: >-
+    Persisted configuration; the structure is the same as the Dredd Class
+    configuration object used by the JavaScript API.
+  docs: https://dredd.org/en/latest/usage-cli/
+option_groups:
+  - name: Core run control
+    options: ['--config', '--path', '--only', '--method', '--sorted', '--names', '--dry-run', '--server', '--server-wait']
+  - name: Hooks
+    options: ['--hookfiles', '--language', '--require', '--hooks-worker-timeout', '--hooks-worker-connect-timeout', '--hooks-worker-connect-retry', '--hooks-worker-after-connect-wait', '--hooks-worker-term-timeout', '--hooks-worker-term-retry', '--hooks-worker-handler-host', '--hooks-worker-handler-port']
+  - name: Request shaping
+    options: ['--header', '--user']
+  - name: Reporting and output
+    options: ['--reporter', '--output', '--details', '--inline-errors', '--loglevel', '--color', '--custom']
+  - name: Meta
+    options: ['--init', '--help', '--version']
+options:
+  - flag: '--color'
+    description: Use --color/--no-color to enable/disable colored output.
+    default: true
+  - flag: '--config'
+    description: Path to dredd.yml config file.
+    default: './dredd.yml'
+  - flag: '--custom'
+    short: '-j'
+    description: "Pass custom key-value configuration data delimited by a colon. E.g. -j 'a:b'"
+    default: []
+  - flag: '--details'
+    short: '-d'
+    description: Determines whether request/response details are included in passing tests.
+    default: false
+  - flag: '--dry-run'
+    short: '-y'
+    description: >-
+      Do not run any real HTTP transaction, only parse API description document
+      and compile transactions.
+    default: null
+  - flag: '--header'
+    short: '-h'
+    description: >-
+      Extra header to include in every request. Can be used multiple times to
+      add multiple headers.
+    default: []
+  - flag: '--help'
+    description: Show usage information.
+  - flag: '--hookfiles'
+    short: '-f'
+    description: >-
+      Path to hook files. Can be used multiple times, supports glob patterns.
+      Hook files are executed in alphabetical order.
+    default: null
+  - flag: '--hooks-worker-after-connect-wait'
+    description: How long to wait between connecting to hooks handler and start of testing. [ms]
+    default: 100
+  - flag: '--hooks-worker-connect-retry'
+    description: How long to wait between attempts to connect to hooks handler. [ms]
+    default: 500
+  - flag: '--hooks-worker-connect-timeout'
+    description: Total hooks handler connection timeout (includes all retries). [ms]
+    default: 1500
+  - flag: '--hooks-worker-handler-host'
+    description: Host of the hooks handler.
+    default: '127.0.0.1'
+  - flag: '--hooks-worker-handler-port'
+    description: Port of the hooks handler.
+    default: 61321
+  - flag: '--hooks-worker-term-retry'
+    description: How long to wait between attempts to terminate hooks handler. [ms]
+    default: 500
+  - flag: '--hooks-worker-term-timeout'
+    description: How long to wait between trying to terminate hooks handler and killing it. [ms]
+    default: 5000
+  - flag: '--hooks-worker-timeout'
+    description: How long to wait for hooks handler to start. [ms]
+    default: 5000
+  - flag: '--init'
+    short: '-i'
+    description: Run interactive configuration. Creates dredd.yml configuration file.
+    default: false
+  - flag: '--inline-errors'
+    short: '-e'
+    description: >-
+      Determines whether failures and errors are displayed as they occur (true)
+      or aggregated and displayed at the end (false).
+    default: false
+  - flag: '--language'
+    short: '-a'
+    description: 'Language of hookfiles. Possible options are: nodejs, ruby, python, php, perl, go, rust'
+    default: 'nodejs'
+  - flag: '--loglevel'
+    short: '-l'
+    description: >-
+      Application logging level. Supported levels: 'debug', 'warning', 'error',
+      'silent'. The value 'debug' also displays timestamps.
+    default: 'warning'
+  - flag: '--method'
+    short: '-m'
+    description: >-
+      Restrict tests to a particular HTTP method (GET, PUT, POST, DELETE,
+      PATCH). Can be used multiple times.
+    default: []
+  - flag: '--names'
+    short: '-n'
+    description: Only list names of requests (for use in a hookfile). No requests are made.
+    default: false
+  - flag: '--only'
+    short: '-x'
+    description: Run only specified transaction name. Can be used multiple times.
+    default: []
+  - flag: '--output'
+    short: '-o'
+    description: >-
+      Specifies output file when using additional file-based reporter. Can be
+      used multiple times if multiple file-based reporters are used.
+    default: []
+  - flag: '--path'
+    short: '-p'
+    description: >-
+      Additional API description paths or URLs. Can be used multiple times with
+      glob pattern for paths.
+    default: []
+  - flag: '--reporter'
+    short: '-r'
+    description: >-
+      Output additional report format. Can be used multiple times. Options:
+      xunit, nyan, dot, markdown, html, apiary.
+    default: []
+  - flag: '--require'
+    description: When using nodejs hooks, require the given module before executing hooks.
+    default: null
+  - flag: '--server'
+    short: '-g'
+    description: 'Run API backend server command and kill it after Dredd execution. E.g. rails server'
+    default: null
+  - flag: '--server-wait'
+    description: Set delay time in seconds between running a server and test run.
+    default: 3
+  - flag: '--sorted'
+    short: '-s'
+    description: >-
+      Sorts requests in a sensible way so that objects are not modified before
+      they are created. Order: CONNECT, OPTIONS, POST, GET, HEAD, PUT, PATCH,
+      LINK, UNLINK, DELETE, TRACE.
+    default: false
+  - flag: '--user'
+    short: '-u'
+    description: 'Basic Auth credentials in the form username:password.'
+    default: null
+  - flag: '--version'
+    description: Show version number.
+reporters: [xunit, nyan, dot, markdown, html, apiary]
+hooks_languages: [nodejs, ruby, python, php, perl, go, rust]
+key_flows:
+  - name: Dry run — compile and validate without calling the API
+    command: dredd ./openapi2.yml http://127.0.0.1:3000 --dry-run
+    description: >-
+      Parses the description document and compiles HTTP transactions without
+      issuing a single real request. This is Dredd's rehearsal mode.
+    docs: https://dredd.org/en/latest/usage-cli/
+  - name: Boot the API under test, then test it
+    command: dredd ./openapi2.yml http://127.0.0.1:3000 --server "rails server" --server-wait 3
+    description: >-
+      Runs the backend server command, waits, runs the suite, then kills the
+      server. Not available inside the Docker image.
+    docs: https://dredd.org/en/latest/installation/
+  - name: Name the transactions so hooks can target them
+    command: dredd ./openapi2.yml http://127.0.0.1:3000 --names
+    description: >-
+      Lists transaction names without making requests — the step the docs
+      prescribe before writing a hook file.
+    docs: https://dredd.org/en/latest/hooks/
+  - name: Run with hooks in a non-JavaScript language
+    command: dredd ./openapi2.yml http://127.0.0.1:3000 --hookfiles ./hooks.py --language python
+    description: >-
+      Starts the language's hooks handler (see packages/dredd-packages.yml) and
+      talks to it over the hooks worker port.
+    docs: https://dredd.org/en/latest/hooks/
+  - name: Emit a CI-readable report
+    command: dredd ./openapi2.yml http://127.0.0.1:3000 --reporter xunit --output ./report.xml
+    description: Additional file-based reporter for continuous integration.
+    docs: https://dredd.org/en/latest/how-to-guides/

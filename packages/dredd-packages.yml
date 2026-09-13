@@ -1,0 +1,139 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, rubygems.org, repo.packagist.org, crates.io,
+  proxy.golang.org, fastapi.metacpan.org, hub.docker.com and
+  https://dredd.org/en/latest/installation/
+note: >-
+  Dredd ships as a command-line tool plus a set of per-language "hooks handler"
+  libraries — the glue an author writes test setup/teardown in. The first-party
+  set is published by the apiaryio GitHub organization; the Go, Rust, PHP and
+  Perl handlers are community implementations the Dredd docs link to but do not
+  own, and are recorded here with official: false. EVERY first-party package's
+  latest release predates 2022, the apiaryio org was marked archived by GitHub
+  on 2024-11-08, and github.com/apiaryio/dredd itself is archived (read-only) —
+  so the version/published fields below are the decay evidence, not a snapshot
+  of an active release train.
+packages:
+  - language: javascript
+    registry: npm
+    name: dredd
+    url: https://www.npmjs.com/package/dredd
+    install: npm install dredd --global
+    official: true
+    version: 14.1.0
+    published: '2021-11-16'
+    source_code: https://github.com/apiaryio/dredd/tree/master/packages/dredd
+    note: >-
+      The CLI itself. registry.npmjs.org reports latest 14.1.0; the package
+      metadata was last modified 2023-02-13 with no newer version published.
+  - language: javascript
+    registry: npm
+    name: dredd-transactions
+    url: https://www.npmjs.com/package/dredd-transactions
+    install: npm install dredd-transactions
+    official: true
+    version: 10.1.0
+    published: '2021-11-16'
+    source_code: https://github.com/apiaryio/dredd/tree/master/packages/dredd-transactions
+    note: >-
+      The compiler that turns an API description document into HTTP
+      transactions. Second package in the same monorepo; released in lockstep
+      with dredd@14.1.0.
+  - language: javascript
+    registry: npm
+    name: dredd-hooks-template
+    url: https://www.npmjs.com/package/dredd-hooks-template
+    install: npm install dredd-hooks-template
+    official: true
+    version: 1.1.8
+    published: '2019-06-20'
+    source_code: https://github.com/apiaryio/dredd-hooks-template
+    note: >-
+      Conformance test-suite template used to build a hooks handler for a new
+      language. Repository archived.
+  - language: python
+    registry: pypi
+    name: dredd_hooks
+    url: https://pypi.org/project/dredd_hooks/
+    install: pip install dredd_hooks
+    official: true
+    version: 0.2.0
+    published: '2018-04-09'
+    source_code: https://github.com/apiaryio/dredd-hooks-python
+    docs: https://dredd.org/en/latest/hooks-python/
+    note: Repository archived; no release in over seven years.
+  - language: ruby
+    registry: rubygems
+    name: dredd_hooks
+    url: https://rubygems.org/gems/dredd_hooks
+    install: gem install dredd_hooks
+    official: true
+    version: 0.1.2
+    published: '2016-12-30'
+    source_code: https://github.com/apiaryio/dredd-hooks-ruby
+    docs: https://dredd.org/en/latest/hooks-ruby/
+    note: Repository archived; no release in over nine years.
+  - language: any
+    registry: docker
+    name: apiaryio/dredd
+    url: https://hub.docker.com/r/apiaryio/dredd
+    install: docker run -it -v $PWD:/api -w /api apiaryio/dredd dredd
+    official: true
+    version: 14.0.0
+    published: '2021-06-13'
+    docs: https://dredd.org/en/latest/installation/
+    note: >-
+      Docker Hub reports the latest, stable and 14.0.0 tags all last pushed
+      2021-06-13 — the image never caught up with the dredd@14.1.0 npm release.
+  - language: php
+    registry: packagist
+    name: ddelnano/dredd-hooks-php
+    url: https://packagist.org/packages/ddelnano/dredd-hooks-php
+    install: composer require ddelnano/dredd-hooks-php --dev
+    official: false
+    version: 2.0.0
+    published: '2020-06-07'
+    source_code: https://github.com/ddelnano/dredd-hooks-php
+    docs: https://dredd.org/en/latest/hooks-php/
+    note: Community hooks handler linked from the Dredd docs; not an apiaryio package.
+  - language: rust
+    registry: crates.io
+    name: dredd-hooks
+    url: https://crates.io/crates/dredd-hooks
+    install: cargo add dredd-hooks
+    official: false
+    version: 0.3.0
+    published: '2017-08-02'
+    source_code: https://github.com/hobofan/dredd-hooks-rust
+    docs: https://dredd.org/en/latest/hooks-rust/
+    note: Community hooks handler linked from the Dredd docs; not an apiaryio package.
+  - language: go
+    registry: go
+    name: github.com/snikch/goodman
+    url: https://pkg.go.dev/github.com/snikch/goodman
+    install: go get github.com/snikch/goodman
+    official: false
+    version: v0.0.0-20171125024755-10e37e294daa
+    published: '2017-11-25'
+    source_code: https://github.com/snikch/goodman
+    docs: https://dredd.org/en/latest/hooks-go/
+    note: >-
+      Community hooks handler linked from the Dredd docs. proxy.golang.org
+      reports only a pseudo-version — the module was never tagged.
+  - language: perl
+    registry: cpan
+    name: Dredd::Hooks
+    url: https://metacpan.org/dist/Dredd-Hooks
+    install: cpanm Dredd::Hooks
+    official: false
+    version: 0.03
+    published: '2016-02-15'
+    docs: https://dredd.org/en/latest/hooks-perl/
+    note: Community hooks handler linked from the Dredd docs; not an apiaryio package.
+summary:
+  package_count: 10
+  official_count: 6
+  registries: [npm, pypi, rubygems, docker, packagist, crates.io, go, cpan]
+  newest_official_release: '2021-11-16'
+  oldest_official_release: '2016-12-30'

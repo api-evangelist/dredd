@@ -1,0 +1,124 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://dredd.org/en/latest/ , https://dredd.org/en/latest/how-it-works/ ,
+  https://github.com/apiaryio/dredd/releases
+scope: consumed-specification-support
+scope_note: >-
+  Dredd publishes no API of its own, so there is no served contract to assert
+  conformance for. What this file records instead is the set of API description
+  and validation standards Dredd IMPLEMENTS as a consumer — the formats it
+  parses and the JSON Schema drafts it validates against. That is the
+  domain-standard signature that matters for a contract-testing tool: it is the
+  whole basis on which a buyer decides whether Dredd can read the description
+  documents they already own. Every entry is evidenced against a published docs
+  page or a release note; none is inferred from a spec, because there is no spec.
+standards:
+  - id: openapi-2.0
+    name: OpenAPI 2.0 (Swagger)
+    conforms: true
+    support: full
+    evidence: >-
+      Listed under "Supported API Description Formats" on
+      https://dredd.org/en/latest/ and given its own behaviour sections
+      throughout https://dredd.org/en/latest/how-it-works/ (Response Headers
+      Expectations, Request Body, Choosing HTTP Transactions). Parsed via
+      fury-adapter-swagger.
+  - id: openapi-3.0
+    name: OpenAPI 3.0
+    conforms: true
+    support: experimental
+    evidence: >-
+      https://dredd.org/en/latest/ lists OpenAPI 3 as supported but marks it
+      "experimental, contributions welcome!" and links the openapi3-parser
+      STATUS.md. Parsed via fury-adapter-oas3-parser; the dredd@13.1.0 release
+      note records the bump to 0.11.0 adding default-response support.
+  - id: openapi-3.1
+    name: OpenAPI 3.1
+    conforms: false
+    evidence: >-
+      Not named anywhere in the documentation. The last release predates
+      OpenAPI 3.1 reaching wide adoption and the project is archived, so no
+      support exists or is planned.
+  - id: api-blueprint
+    name: API Blueprint
+    conforms: true
+    support: full
+    evidence: >-
+      First-listed supported format on https://dredd.org/en/latest/ ; parsed
+      via Drafter (dredd@13.1.0 updated to Drafter 5.0). MSON Attributes
+      sections are compiled to JSON Schema automatically.
+  - id: mson
+    name: MSON (Markdown Syntax for Object Notation)
+    conforms: true
+    support: full
+    evidence: >-
+      https://dredd.org/en/latest/how-it-works/ — "Attributes section with data
+      structure description in MSON - API Blueprint parser automatically
+      generates JSON Schema from MSON."
+  - id: json-schema-draft-04
+    name: JSON Schema Draft 4
+    conforms: true
+    evidence: >-
+      https://dredd.org/en/latest/how-it-works/ — API Blueprint Schema sections
+      accept "provided custom JSON Schema (Draft 4, Draft 6, and Draft 7)".
+  - id: json-schema-draft-06
+    name: JSON Schema Draft 6
+    conforms: true
+    evidence: Same docs sentence as draft-04.
+  - id: json-schema-draft-07
+    name: JSON Schema Draft 7
+    conforms: true
+    evidence: Same docs sentence as draft-04.
+  - id: json-schema-draft-03
+    name: JSON Schema Draft 3
+    conforms: false
+    evidence: >-
+      Removed in the 13.0.0 release (2020-02-05, "Removes support for JSON
+      Schema Draft V3"), after a deprecation warning shipped in v12.2.0 via
+      gavel@8.2.3.
+  - id: json-schema-2020-12
+    name: JSON Schema 2020-12
+    conforms: false
+    evidence: Not named in the documentation or in any release note.
+  - id: semver
+    name: Semantic Versioning 2.0.0
+    conforms: true
+    evidence: >-
+      https://dredd.org/en/latest/how-it-works/ — "Dredd follows Semantic
+      Versioning."
+  - id: rfc6570-uri-template
+    name: RFC 6570 URI Templates
+    conforms: true
+    evidence: >-
+      https://dredd.org/en/latest/how-it-works/ execution life cycle validates
+      URI templates and expands them with parameters; dredd@13.1.0 records
+      "improved URI Template validation" from the Drafter 5.0 update.
+  - id: rfc7231-http
+    name: HTTP/1.1 semantics (RFC 7231)
+    conforms: true
+    evidence: >-
+      Dredd issues and validates real HTTP transactions; content-negotiation
+      headers are the only response headers whose values it validates
+      (https://dredd.org/en/latest/how-it-works/).
+  - id: rfc7807-rfc9457-problem-details
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: >-
+      Dredd serves no HTTP API, so it emits no error envelope of its own. Not
+      referenced in the documentation.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: >-
+      Dredd has no authorization surface. It can forward credentials to the API
+      under test (--user for HTTP Basic, --header for a bearer token) but
+      implements no OAuth flow itself.
+compliance_program:
+  published: false
+  certifications: []
+  note: >-
+    No SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP or GDPR posture is published
+    anywhere on dredd.org or in the repository, and none would be expected: MIT
+    licensed software you run on your own machine, operated by nobody. No
+    Compliance pointer is emitted.

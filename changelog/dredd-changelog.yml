@@ -1,0 +1,72 @@
+generated: '2026-09-13'
+method: searched
+source: https://github.com/apiaryio/dredd/releases
+note: >-
+  The Dredd README and docs both point "Changelog" at the GitHub Releases feed;
+  the repository carries no CHANGELOG.md (probed 2026-09-13, 404). Entries below
+  are read from the GitHub Releases API. The repository is ARCHIVED and
+  read-only, so this changelog is closed — the newest entry, dredd@14.1.0, is
+  from 2021-11-16 and no release has followed in nearly four years.
+changelog_url: https://github.com/apiaryio/dredd/releases
+scheme: semver
+scheme_docs: https://dredd.org/en/latest/how-it-works/
+current_version: 14.1.0
+current_version_released: '2021-11-16'
+status: closed
+status_evidence: >-
+  github.com/apiaryio/dredd reports archived: true (last push 2024-05-11) and
+  the apiaryio organization page carries the banner "This organization was
+  marked as archived by an administrator on Nov 8, 2024. It is no longer
+  maintained."
+entries:
+  - version: dredd@14.1.0
+    date: '2021-11-16'
+    breaking: false
+    highlights: >-
+      Final published release of the CLI. GitHub release carries no notes;
+      registry.npmjs.org confirms 14.1.0 as latest.
+  - version: dredd-transactions@10.1.0
+    date: '2021-11-16'
+    breaking: false
+    highlights: >-
+      Final release of the transaction compiler, cut alongside dredd@14.1.0.
+  - version: dredd@13.1.0
+    date: '2020-04-20'
+    breaking: false
+    additions:
+      - Updated to fury-adapter-oas3-parser 0.11.0, adding support for default responses.
+      - Updated API Blueprint parser (Drafter 5.0) with improved URI Template validation.
+  - version: dredd@13.0.2
+    date: '2020-03-26'
+    breaking: false
+    additions:
+      - Updated to fury-adapter-swagger 0.28.3.
+      - Updated to fury-adapter-oas3-parser 0.10.2.
+  - version: '13.0.0'
+    date: '2020-02-05'
+    breaking: true
+    deprecations:
+      - Removes support for JSON Schema Draft V3.
+    additions:
+      - Uses a more powerful JSON Schema validator (AJV).
+  - version: 12.2.1
+    date: '2020-02-04'
+    breaking: false
+    highlights: >-
+      Dependency bumps (dredd-transactions 9.1.1, fury-adapter-oas3-parser
+      0.10.1, fury-adapter-swagger 0.28.1) plus a fix to JSON Schema generated
+      from OpenAPI 2.0 documents.
+  - version: v12.2.0
+    date: '2020-02-03'
+    breaking: false
+    additions:
+      - gavel@8.2.3, producing a deprecation warning on JSON Schema Draft 3 usage.
+  - version: v12.1.0
+    date: '2019-10-03'
+    breaking: false
+    additions:
+      - Basic TypeScript setup.
+  - version: v12.0.0
+    date: '2019-08-20'
+    breaking: true
+    highlights: Major release; explanatory comments and ApiaryReporter property fallbacks improved.

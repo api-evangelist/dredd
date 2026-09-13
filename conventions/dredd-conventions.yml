@@ -1,0 +1,118 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://dredd.org/en/latest/usage-cli/ ,
+  https://dredd.org/en/latest/how-it-works/ ,
+  https://dredd.org/en/latest/how-to-guides/
+surface: cli
+surface_note: >-
+  READ THIS BEFORE READING ANYTHING BELOW. Dredd exposes no HTTP API. It is a
+  command-line client that an operator installs and runs; the only HTTP requests
+  in the picture are the ones Dredd makes AGAINST the user's own API under test.
+  The runtime-semantics fields this artifact normally captures — idempotency,
+  pagination, error envelopes, rate-limit signalling, request-id tracing —
+  describe an API a provider serves, and Dredd serves none. They are therefore
+  recorded as `na` (not applicable, honestly checked) rather than `none` (a
+  provider that serves an API and omits the mechanism). Where the CLI has a real
+  equivalent of one of these ideas — and --dry-run is exactly that — it is
+  recorded against the CLI surface and labelled as such.
+authentication:
+  style: na
+  note: >-
+    Dredd has nothing to authenticate to. It PASSES credentials through to the
+    API under test: --user takes HTTP Basic credentials as username:password,
+    --header injects an arbitrary header (the documented route for a bearer
+    token or API key), and the Authenticated APIs how-to guide
+    (https://dredd.org/en/latest/how-to-guides/) covers the rest. See
+    cli/dredd-cli.yml.
+idempotency:
+  coverage: na
+  supported: na
+  header: null
+  scope: []
+  retention: null
+  note: >-
+    No write surface exists to make idempotent. A Dredd run is repeatable by
+    construction — it re-sends the same compiled transactions each time — but
+    the side effects belong to the user's API, not to Dredd, and Dredd offers no
+    replay-protection contract over them. The documented mitigation for
+    order-dependent side effects is --sorted, which orders transactions
+    CONNECT, OPTIONS, POST, GET, HEAD, PUT, PATCH, LINK, UNLINK, DELETE, TRACE
+    so objects are not modified before they are created. No Idempotency pointer
+    is emitted.
+dry_run_mode:
+  supported: true
+  surface: cli
+  flag: '--dry-run'
+  short: '-y'
+  description: >-
+    "Do not run any real HTTP transaction, only parse API description document
+    and compile transactions." Verbatim from the CLI Options Reference. This is
+    a genuine rehearsal mode: the description document is parsed, transactions
+    are compiled and pre-run checks (missing URI template example values,
+    required parameters, non-parseable JSON bodies, invalid URI templates) all
+    report, with zero requests issued.
+  related:
+    - flag: '--names'
+      description: >-
+        "Only list names of requests (for use in a hookfile). No requests are
+        made." A second no-request mode, used to discover transaction names
+        before writing hooks.
+  docs: https://dredd.org/en/latest/usage-cli/
+reversibility:
+  grade: na
+  note: >-
+    Dredd performs no write of its own that could be reversed. Two caveats a
+    consumer should still know, both stated in the provider's own docs rather
+    than inferred here. First, Dredd DOES mutate the API under test when the
+    description document contains write transactions — reversal is the user's
+    responsibility, and the documented tools for controlling it are hooks
+    (before/after/beforeAll/afterAll, for setup and teardown), --sorted for
+    ordering, --only and --method for restricting what runs, and --dry-run for
+    not running it at all. Second, `dredd init` writes a dredd.yml file into the
+    working directory. Neither has a published reversal operation or window, and
+    none is asserted here.
+  write_surfaces: []
+pagination:
+  style: na
+  note: No API, no result sets to page.
+versioning:
+  style: semver
+  note: >-
+    Documented at https://dredd.org/en/latest/how-it-works/ ; the npm `stable`
+    dist-tag is the published stability channel for CI. Full detail in
+    lifecycle/dredd-lifecycle.yml.
+error_envelope:
+  shape: na
+  note: >-
+    Dredd reports, it does not respond. Results are emitted through pluggable
+    reporters (xunit, nyan, dot, markdown, html, apiary) selected with
+    --reporter and written with --output; --inline-errors controls whether
+    failures print as they occur or aggregate at the end, and --details controls
+    whether request/response detail is included for passing tests. The result
+    data structures Dredd produces — Transaction, Transaction Test, Transaction
+    Results, Gavel Validation Result, Gavel Error, Test Runtime Error — are
+    published at https://dredd.org/en/latest/data-structures/ .
+rate_limit_signaling:
+  supported: na
+  note: >-
+    No API served, so no limits published and no headers emitted. See
+    rate-limits/dredd-rate-limits.yml.
+request_tracing:
+  header: User-Agent
+  note: >-
+    The one outbound convention Dredd does own: it sends its own version number
+    in the User-Agent header of every request it makes, unless the API
+    description document overrides that header
+    (https://dredd.org/en/latest/how-it-works/). Not a request-id tracing
+    mechanism.
+field_expansion:
+  supported: na
+metadata:
+  supported: na
+cross_links:
+  cli: cli/dredd-cli.yml
+  lifecycle: lifecycle/dredd-lifecycle.yml
+  conformance: conformance/dredd-conformance.yml
+  packages: packages/dredd-packages.yml
+  rate_limits: rate-limits/dredd-rate-limits.yml
