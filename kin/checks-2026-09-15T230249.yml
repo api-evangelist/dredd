@@ -2,19 +2,17 @@
 kin_checks:
   slug: dredd
   schema_version: 0.22.0
-  scored_at: '2026-09-12'
-  run_ts: 2026-09-12T221936
+  scored_at: '2026-09-15'
+  run_ts: 2026-09-15T230249
   note: Actionable checks only (missed + partial). earned/na are every other check
     in rubric/scoring-0.22.0.yml; counts below let you verify that.
   counts:
     total: 136
-    earned: 10
-    partial: 6
-    missed: 76
+    earned: 17
+    partial: 2
+    missed: 73
     na: 44
   checks:
-  - id: description_substantive
-    status: missed
   - id: multiple_apis
     status: missed
   - id: base_url_per_api
@@ -55,11 +53,13 @@ kin_checks:
     status: missed
   - id: vocabulary_published
     status: missed
-  - id: conformance_declared
-    status: missed
   - id: overlay_published
     status: missed
   - id: status_page_present
+    status: missed
+  - id: rate_limits_documented
+    status: missed
+  - id: rate_limits_rich
     status: missed
   - id: deprecation_policy
     status: missed
@@ -75,15 +75,9 @@ kin_checks:
     status: missed
   - id: api_reference_present
     status: missed
-  - id: getting_started_present
-    status: missed
   - id: authentication_documented
     status: missed
-  - id: sdk_count_1
-    status: missed
   - id: sdk_count_3
-    status: missed
-  - id: cli_present
     status: missed
   - id: console_or_sandbox
     status: missed
@@ -91,9 +85,11 @@ kin_checks:
     status: missed
   - id: agent_skill_present
     status: missed
-  - id: support_channel
-    status: missed
   - id: blog_present
+    status: missed
+  - id: plans_present
+    status: missed
+  - id: plans_multiple
     status: missed
   - id: pricing_link
     status: missed
@@ -118,8 +114,6 @@ kin_checks:
   - id: reg_privacy_policy
     status: missed
   - id: reg_compliance_published
-    status: missed
-  - id: reg_standards_conformance
     status: missed
   - id: upsert_outcome_discriminator
     status: missed
@@ -165,22 +159,10 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
-  - id: rate_limits_documented
-    status: partial
-    earned: 2.0
-  - id: rate_limits_rich
-    status: partial
-    earned: 1.0
   - id: github_org_present
     status: partial
     earned: 1.0
     detail: pointer liveness 0.5
-  - id: plans_present
-    status: partial
-    earned: 2.0
-  - id: plans_multiple
-    status: partial
-    earned: 1.0
   - id: rate_limit_signal
     status: partial
     earned: 3.5
