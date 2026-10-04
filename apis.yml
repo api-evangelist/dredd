@@ -40,6 +40,9 @@ accessModel:
 position: Consuming
 access: Open Source
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dredd.png
+x-docs-platform: sphinx
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-25
 tags:
   - Contract Testing
   - API Testing
@@ -49,8 +52,8 @@ tags:
   - Developer Tools
   - Command Line
   - Continuous Integration
-  - JSON-Schema
-  - Open-Source
+  - JSON Schema
+  - Open Source
 tags_raw:
   - Contract Testing
   - API Testing
@@ -62,6 +65,8 @@ tags_raw:
   - Continuous Integration
   - JSON Schema
   - Open Source
+  - JSON-Schema
+  - Open-Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/dredd/refs/heads/main/apis.yml
 created: '2026-03-25'
