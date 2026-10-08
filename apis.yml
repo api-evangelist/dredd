@@ -98,6 +98,8 @@ apis:
       - type: ReleaseNotes
         url: https://github.com/apiaryio/dredd/releases
 common:
+  - type: FinOps
+    url: finops/dredd-finops.yml
   - type: ContributionGuide
     url: https://github.com/apiaryio/dredd/blob/master/CONTRIBUTING.md
   - type: License
